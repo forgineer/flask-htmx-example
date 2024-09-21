@@ -1,0 +1,32 @@
+[project]
+name='HtmxBlog'
+version='1.0.0'
+description='The basic blog app built in the Flask tutorial with HTMX.'
+license = {text = 'MIT License'}
+requires-python = ">=3.10"
+dependencies = [
+    'Flask',
+    'pony'
+]
+
+
+[tool.setuptools.packages.find]
+where = ['src']
+include = ['HtmxBlog']
+
+
+[tool.setuptools.package-data]
+HtmxBlog = [
+    "schema.sql",
+    "static/*",
+    "templates/*",
+    "templates/auth/*",
+    "templates/blog/*"
+]
+
+
+[build-system]
+requires = [
+    'setuptools >= 61.0'
+]
+build-backend = 'setuptools.build_meta'
