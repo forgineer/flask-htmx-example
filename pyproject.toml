@@ -5,8 +5,7 @@ description='The basic blog app built in the Flask tutorial with HTMX.'
 license = {text = 'MIT License'}
 requires-python = ">=3.10"
 dependencies = [
-    'Flask',
-    'pony'
+    'Flask'
 ]
 
 

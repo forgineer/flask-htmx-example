@@ -1,15 +1,21 @@
-{% extends 'base.html' %}
-
-{% block header %}
-<h1>{% block title %}Register{% endblock %}</h1>
-{% endblock %}
-
-{% block content %}
+<header>
+    <h1>Register</h1>
+</header>
+{% for message in get_flashed_messages() %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
 <form method="post">
     <label for="username">Username</label>
     <input name="username" id="username" required>
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
-    <input type="submit" value="Register">
+    <input type="submit"
+           value="Register"
+           hx-post="{{ url_for('auth.register') }}"
+           hx-trigger="click"
+           hx-target=".content"
+           hx-swap="innerHTML">
 </form>
-{% endblock %}
+
+{# Out of Band (OOB) Swap for page title #}
+<title hx-swap-oob="outerHTML:.blog_title">Register - HTMX Blog</title>

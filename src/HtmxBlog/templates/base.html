@@ -1,15 +1,27 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - HTMX Blog</title>
+<title class="blog_title">{% block title %}{% endblock %} - HTMX Blog</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
 <nav>
-    <h1>Flaskr</h1>
+    <h1 hx-get="{{ url_for('blog.posts') }}"
+        hx-trigger="click"
+        hx-target=".content"
+        hx-swap="innerHTML">HTMX Blog</h1>
     <ul>
         {% if g.user %}
         <li><span>{{ g.user['username'] }}</span>
         <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
         {% else %}
-        <li><a href="{{ url_for('auth.register') }}">Register</a>
-        <li><a href="{{ url_for('auth.login') }}">Log In</a>
+        <li><a href="#"
+               hx-get="{{ url_for('auth.register') }}"
+               hx-trigger="click"
+               hx-target=".content"
+               hx-swap="innerHTML">Register</a>
+        <li><a href="#"
+               hx-get="{{ url_for('auth.login') }}"
+               hx-trigger="click"
+               hx-target=".content"
+               hx-swap="innerHTML">Log In</a>
         {% endif %}
     </ul>
 </nav>
