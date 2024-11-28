@@ -35,7 +35,7 @@
 {# Out of Band (OOB) Swap for page title #}
 <title class="blog_title" hx-swap-oob="outerHTML:.blog_title">Posts - HTMX Blog</title>
 
-{# Out of Band (OOB) Swap for pag navigation #}
+{# Out of Band (OOB) Swap for page navigation #}
 <nav class="blog_nav" hx-swap-oob="outerHTML:.blog_nav">
   <h1 hx-get="{{ url_for('blog.posts') }}"
       hx-trigger="click"
