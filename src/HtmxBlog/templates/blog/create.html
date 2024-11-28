@@ -1,15 +1,21 @@
-{% extends 'base.html' %}
-
-{% block header %}
-<h1>{% block title %}New Post{% endblock %}</h1>
-{% endblock %}
-
-{% block content %}
-<form method="post">
+<header>
+  <h1>New Post</h1>
+</header>
+{% for message in get_flashed_messages() %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+<form>
   <label for="title">Title</label>
   <input name="title" id="title" value="{{ request.form['title'] }}" required>
   <label for="body">Body</label>
   <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
-  <input type="submit" value="Save">
+  <input type="submit"
+         value="Save"
+         hx-post="{{ url_for('blog.create') }} "
+         hx-trigger="click"
+         hx-target=".content"
+         hx-swap="innerHTML">
 </form>
-{% endblock %}
+
+{# Out of Band (OOB) Swap for page title #}
+<title class="blog_title" hx-swap-oob="outerHTML:.blog_title">New Post - HTMX Blog</title>

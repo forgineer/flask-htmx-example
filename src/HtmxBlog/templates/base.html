@@ -2,7 +2,7 @@
 <title class="blog_title">{% block title %}{% endblock %} - HTMX Blog</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
-<nav>
+<nav class="blog_nav">
     <h1 hx-get="{{ url_for('blog.posts') }}"
         hx-trigger="click"
         hx-target=".content"
@@ -10,7 +10,11 @@
     <ul>
         {% if g.user %}
         <li><span>{{ g.user['username'] }}</span>
-        <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+        <li><a href="#"
+               hx-get="{{ url_for('auth.logout') }}"
+               hx-trigger="click"
+               hx-target=".content"
+               hx-swap="innerHTML">Log Out</a>
         {% else %}
         <li><a href="#"
                hx-get="{{ url_for('auth.register') }}"

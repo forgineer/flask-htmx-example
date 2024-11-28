@@ -4,7 +4,7 @@
 {% for message in get_flashed_messages() %}
 <div class="flash">{{ message }}</div>
 {% endfor %}
-<form method="post">
+<form>
     <label for="username">Username</label>
     <input name="username" id="username" required>
     <label for="password">Password</label>
@@ -18,4 +18,4 @@
 </form>
 
 {# Out of Band (OOB) Swap for page title #}
-<title hx-swap-oob="outerHTML:.blog_title">Register - HTMX Blog</title>
+<title class="blog_title" hx-swap-oob="outerHTML:.blog_title">Register - HTMX Blog</title>

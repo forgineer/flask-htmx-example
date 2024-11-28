@@ -4,13 +4,18 @@
 {% for message in get_flashed_messages() %}
 <div class="flash">{{ message }}</div>
 {% endfor %}
-<form method="post">
+<form>
   <label for="username">Username</label>
   <input name="username" id="username" required>
   <label for="password">Password</label>
   <input type="password" name="password" id="password" required>
-  <input type="submit" value="Log In">
+  <input type="submit"
+         value="Log In"
+         hx-post="{{ url_for('auth.login') }} "
+         hx-trigger="click"
+         hx-target=".content"
+         hx-swap="innerHTML">
 </form>
 
 {# Out of Band (OOB) Swap for page title #}
-<title hx-swap-oob="outerHTML:.blog_title">Log In - HTMX Blog</title>
+<title class="blog_title" hx-swap-oob="outerHTML:.blog_title">Log In - HTMX Blog</title>
