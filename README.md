@@ -12,7 +12,7 @@ Follow these steps to get HtmxBlog up and running on your local machine. This gu
 
 #### 1. Clone the Repository
 
-First, clone the Pony Blog repository from GitHub to your local machine using the following command:
+First, clone the HTMX Blog repository from GitHub to your local machine using the following command:
 
 ```bash
 git clone https://github.com/forgineer/flask-htmx-example.git
@@ -52,7 +52,7 @@ Activate the virtual environment:
 
 #### 4. Install the Application and Dependencies
 
-With the virtual environment activated, install Pony Blog and its dependencies using pip:
+With the virtual environment activated, install HTMX Blog and its dependencies using pip:
 
 ```bash
 pip install .
